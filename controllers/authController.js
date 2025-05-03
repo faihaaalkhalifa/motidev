@@ -32,9 +32,18 @@ exports.signup = catchAsync(async (req, res, next) => {
     email: req.body.email,
     password: req.body.password,
   //  property signup
+
+
+
+
+
+
+
+
+
   });
   const url = `${req.protocol}://${req.get('host')}/me`;
-  await new Email(newUser, url).welcomeMailerSend();
+  // await new Email(newUser, url).welcomeMailerSend();
   // .catch(async (er) => {
   //   await User.deleteOne({ id: newUser.id });
   // });
@@ -77,11 +86,11 @@ exports.forgotPassword = catchAsync(async (req, res, next) => {
     const resetURL = `${req.protocol}://${req.get('host')}${req.originalUrl
       .split('/', 4)
       .join('/')}/resetPassword/${resetToken}`;
-    await new Email(user, resetURL).sendPasswordResetMailerSend();
+    // await new Email(user, resetURL).sendPasswordResetMailerSend();
     res.status(200).json({
       status: 'success',
       message: 'Token sent to email!',
-      // url: resetURL,
+      url: resetURL,
     });
   } catch (err) {
     user.passwordResetToken = undefined;

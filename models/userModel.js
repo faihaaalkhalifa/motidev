@@ -1,11 +1,16 @@
+
 const crypto = require('crypto');
 const mongoose = require('mongoose');
 const validator = require('validator');
 const bcrypt = require('bcryptjs');
-const { RoleCode } = require('../utils/enum');
+const { RoleCode, levelEnum } = require('../utils/enum');
 const userSchema = new mongoose.Schema(
   {
     // <creating-property-schema />
+      level: {
+          type: String,
+          enum: Object.values(levelEnum),
+     },
     name: {
       type: String,
       required: [true, 'Please tell us your name!'],
@@ -48,6 +53,7 @@ const userSchema = new mongoose.Schema(
   { versionKey: false },
 );
 // <creating-function-schema />
+
 userSchema.pre('save', async function (next) {
   // Only run this function if password was actually modified
   if (!this.isModified('password')) return next();

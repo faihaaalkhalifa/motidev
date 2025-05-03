@@ -1,3 +1,4 @@
+// استيراد المكتبات والوحدات
 const User = require('./../models/userModel');
 const catchAsync = require('../utils/catchAsync');
 const AppError = require('./../utils/appError');
@@ -27,6 +28,16 @@ exports.updateMe = catchAsync(async (req, res, next) => {
   const filteredBody = filterObj(
     req.body,
     //  property update
+
+
+
+
+
+
+
+
+
+
     'name',
     'email',
     'photo',

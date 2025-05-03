@@ -368,6 +368,15 @@ exports.User = {
   properties: {
     id: { type: 'string' },
     // property
+
+
+
+
+
+
+
+
+
     email: { type: 'string', format: 'email' },
     name: { type: 'string' },
     role: { type: 'string', enum: Object.values(RoleCode) },
@@ -377,6 +386,15 @@ exports.User = {
   example: {
     id: '5ebac534954b54139806c112',
     // property example
+
+
+
+
+
+
+
+
+
     email: 'user@gmail.com',
     name: 'adel seirafi',
     role: 'USER',
@@ -388,6 +406,15 @@ exports.createUser = {
   type: 'object',
   properties: {
     // create property
+
+
+
+
+
+
+
+
+
     name: { type: 'string' },
     email: { type: 'string' },
     password: { type: 'string' },
@@ -396,6 +423,15 @@ exports.createUser = {
   },
   example: {
     // create property example
+
+
+
+
+
+
+
+
+
     name: 'Mohammed Seirafi',
     email: 'adel@gmail.com',
     password: '123454321',
@@ -408,12 +444,30 @@ exports.updateMe = {
   type: 'object',
   properties: {
     // update property
+
+
+
+
+
+
+
+
+
     name: { type: 'string' },
     email: { type: 'string' },
     photo: { type: 'string' },
   },
   example: {
     // update property example
+
+
+
+
+
+
+
+
+
     name: 'Mohammed Seirafi',
     email: 'adel@gmail.com',
     photo: './public/img/users/dafult.jpg',
