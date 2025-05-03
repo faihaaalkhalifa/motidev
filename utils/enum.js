@@ -12,3 +12,9 @@ exports.Env = {
   test: 'test',
 };
 // <creating-enum-type />
+
+exports.levelEnum = {
+  Junior: 'Junior',
+  MidLevel: 'Mid-Level',
+  Senior: 'Senior',
+};

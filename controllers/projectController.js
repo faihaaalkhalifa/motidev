@@ -1,0 +1,9 @@
+const Project = require('../models/projectModel');
+const AppError = require('../utils/appError');
+const handlerFactory = require('../utils/handlerFactory');
+const catchAsync = require('../utils/catchAsync');
+exports.getProject = handlerFactory.getOne(Project);
+exports.createProject = handlerFactory.createOne(Project);
+exports.updateProject = handlerFactory.updateOne(Project);
+exports.deleteProject = handlerFactory.deleteOne(Project);
+exports.getAllProject = handlerFactory.getAll(Project);

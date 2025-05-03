@@ -23,6 +23,7 @@
     "multer": "^1.4.5-lts.1",
     "nodemailer": "^6.9.6",
     "nodemon": "^3.0.1",
+    "prettier": "^3.5.3",
     "pug": "^3.0.2",
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^5.0.0",
@@ -35,7 +36,7 @@
   },
   "scripts": {
     "start": "nodemon app.js",
-    "seed:dev": "node seeds.js",
+    " ": "node seeds.js",
     "format": "prettier --write \"**/*.js\" ",
     "generate:resource:document": "hygen generate document-resource",
     "postgenerate:resource:document": "npm run format",
