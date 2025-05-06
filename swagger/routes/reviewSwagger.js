@@ -1,17 +1,17 @@
 /**
  * @swagger
  * tags:
- *   name: Projects
- *   description: Project management and retrieval
+ *   name: Reviews
+ *   description: Review management and retrieval
  */
 
 /**
  * @swagger
- * /projects:
+ * /reviews:
  *   post:
- *     summary: Create a project
- *     description: USER can create project.
- *     tags: [Projects]
+ *     summary: Create a review
+ *     description: USER can create review.
+ *     tags: [Reviews]
  *     security:
  *       - bearerAuth: []
  *     requestBody:
@@ -19,7 +19,7 @@
  *       content:
  *         application/json:
  *           schema:
- *             $ref: '#/components/schemas/createProject'
+ *             $ref: '#/components/schemas/createReview'
  *     responses:
  *       "201":
  *         description: Created
@@ -32,7 +32,7 @@
  *                   type: string
  *                   example: success
  *                 doc:
- *                     $ref: '#/components/schemas/Project'
+ *                     $ref: '#/components/schemas/Review'
  *       "400":
  *         $ref: '#/components/responses/DuplicateEmail'
  *       "401":
@@ -41,9 +41,9 @@
  *         $ref: '#/components/responses/Forbidden'
  *
  *   get:
- *     summary: Get all projects
- *     description: USER,ADMIN can retrieve all projects.
- *     tags: [Projects]
+ *     summary: Get all reviews
+ *     description: USER,ADMIN can retrieve all reviews.
+ *     tags: [Reviews]
  *     security:
  *       - Bearer: []
  *     parameters:
@@ -65,7 +65,7 @@
  *           type: integer
  *           minimum: 1
  *         default: 10
- *         description: Maximum number of projects
+ *         description: Maximum number of reviews
  *       - in: query
  *         name: search
  *         schema:
@@ -100,7 +100,7 @@
  *                 doc:
  *                   type: array
  *                   items:
- *                     $ref: '#/components/schemas/Project'
+ *                     $ref: '#/components/schemas/Review'
  *       "401":
  *         $ref: '#/components/responses/Unauthorized'
  *       "403":
@@ -109,11 +109,11 @@
 
 /**
  * @swagger
- * /projects/{id}:
+ * /reviews/{id}:
  *   get:
- *     summary: Get a project
+ *     summary: Get a review
  *     description: USER,ADMIN can use this router.
- *     tags: [Projects]
+ *     tags: [Reviews]
  *     security:
  *       - bearerAuth: []
  *     parameters:
@@ -122,7 +122,7 @@
  *         required: true
  *         schema:
  *           type: string
- *         description: Project id
+ *         description: Review id
  *     responses:
  *       "200":
  *         description: OK
@@ -135,7 +135,7 @@
  *                   type: string
  *                   example: success
  *                 doc:
- *                     $ref: '#/components/schemas/Project'
+ *                     $ref: '#/components/schemas/Review'
  *       "401":
  *         $ref: '#/components/responses/Unauthorized'
  *       "403":
@@ -144,9 +144,9 @@
  *         $ref: '#/components/responses/NotFound'
  *
  *   patch:
- *     summary: Update a project
+ *     summary: Update a review
  *     description: USER can use this router.
- *     tags: [Projects]
+ *     tags: [Reviews]
  *     security:
  *       - bearerAuth: []
  *     parameters:
@@ -155,13 +155,13 @@
  *         required: true
  *         schema:
  *           type: string
- *         description: Project id
+ *         description: Review id
  *     requestBody:
  *         required: true
  *         content:
  *           application/json:
  *             schema:
- *               $ref: '#/components/schemas/updateProject'
+ *               $ref: '#/components/schemas/updateReview'
  *     responses:
  *       "200":
  *         description: OK
@@ -174,7 +174,7 @@
  *                   type: string
  *                   example: success
  *                 doc:
- *                     $ref: '#/components/schemas/Project'
+ *                     $ref: '#/components/schemas/Review'
  *       "401":
  *         $ref: '#/components/responses/Unauthorized'
  *       "403":
@@ -183,9 +183,9 @@
  *         $ref: '#/components/responses/NotFound'
  *
  *   delete:
- *     summary: Delete a  project.
+ *     summary: Delete a  review.
  *     description: USER,ADMIN can use this router.
- *     tags: [Projects]
+ *     tags: [Reviews]
  *     security:
  *       - bearerAuth: []
  *     parameters:
@@ -194,7 +194,7 @@
  *         required: true
  *         schema:
  *           type: string
- *         description: Project id
+ *         description: Review id
  *     responses:
  *       "200":
  *         description: OK
@@ -217,89 +217,54 @@
  *         $ref: '#/components/responses/NotFound'
  */
 
-exports.Project = {
-  type: 'object',
-  properties: {
-    id: { type: 'string' },
-    // property
-    emails: { type: 'array', items: { type: 'string' } },
-    link: { type: 'string' },
-    photo: { type: 'string' },
-    description: { type: 'string' },
-    name: { type: 'string' },
-  },
-  example: {
-    _id: '5ebac534954b54139806c112',
-    // property example
-    emails: ['emails'],
+// exports.Review = {
+//   type: 'object',
+//   properties: {
+//     id: { type: 'string' },
+//     // property
+//     rate: { type: 'number' },
+//     comment: { type: 'string' },
+//   },
+//   example: {
+//     _id: '5ebac534954b54139806c112',
+//     // property example
+//     rate: rate,
+//     comment: 'comment',
 
-    link: 'link',
+//     createdAt: '2024-11-24T16:35:04.438Z',
+//     updatedAt: '2024-11-24T16:35:04.438Z',
+//   },
+// };
+// exports.createReview = {
+//   type: 'object',
+//   properties: {
+//     // create property
+//     rate: { type: 'number' },
+//     comment: { type: 'string' },
+//   },
+//   example: {
+//     // create property example
+//     rate: rate,
 
-    photo: 'caver',
+//     comment: 'comment',
+//   },
+//   required: [
+//     // required property
 
-    description: 'description',
+//     'comment',
+//   ],
+// };
+// exports.updateReview = {
+//   type: 'object',
+//   properties: {
+//     // update property
+//     rate: { type: 'number' },
+//     comment: { type: 'string' },
+//   },
+//   example: {
+//     // update property example
+//     rate: rate,
 
-    name: 'logo mas',
-
-    createdAt: '2024-11-24T16:35:04.438Z',
-    updatedAt: '2024-11-24T16:35:04.438Z',
-  },
-};
-exports.createProject = {
-  type: 'object',
-  properties: {
-    // create property
-    emails: { type: 'array', items: { type: 'string' } },
-    link: { type: 'string' },
-    photo: { type: 'string' },
-    description: { type: 'string' },
-    name: { type: 'string' },
-  },
-  example: {
-    // create property example
-    emails: ['emails'],
-
-    link: 'link',
-
-    photo: 'caver',
-
-    description: 'description',
-
-    name: 'logo mas',
-  },
-  required: [
-    // required property
-    'emails',
-
-    'link',
-
-    'photo',
-
-    'description',
-
-    'name',
-  ],
-};
-exports.updateProject = {
-  type: 'object',
-  properties: {
-    // update property
-    emails: { type: 'array', items: { type: 'string' } },
-    link: { type: 'string' },
-    photo: { type: 'string' },
-    description: { type: 'string' },
-    name: { type: 'string' },
-  },
-  example: {
-    // update property example
-    emails: ['emails'],
-
-    link: 'link',
-
-    photo: 'caver',
-
-    description: 'description',
-
-    name: 'logo mas',
-  },
-};
+//     comment: 'comment',
+//   },
+// };

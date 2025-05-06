@@ -1,0 +1,9 @@
+const Review = require('../models/reviewModel');
+const AppError = require('../utils/appError');
+const handlerFactory = require('../utils/handlerFactory');
+const catchAsync = require('../utils/catchAsync');
+exports.getReview = handlerFactory.getOne(Review);
+exports.createReview = handlerFactory.createOne(Review);
+exports.updateReview = handlerFactory.updateOne(Review);
+exports.deleteReview = handlerFactory.deleteOne(Review);
+exports.getAllReview = handlerFactory.getAll(Review);
