@@ -1,4 +1,5 @@
 const swaggerJsDoc = require('swagger-jsdoc');
+<<<<<<< HEAD
 const {
   Review,
   createReview,
@@ -14,6 +15,9 @@ const {
   createQuestion,
   updateQuestion,
 } = require('./routes/questionSwagger');
+=======
+const { Question, createQuestion, updateQuestion } = require('./routes/questionSwagger');
+>>>>>>> 70b13b397ab76889ad3b7bfb30e2ae2f9028f268
 const { signUp } = require('./routes/auth');
 const { User, updateMe, createUser } = require('./routes/users');
 const {
@@ -42,6 +46,7 @@ const options = {
     ],
     components: {
       schemas: {
+<<<<<<< HEAD
         Review,
         createReview,
         updateReview,
@@ -51,6 +56,11 @@ const options = {
         Question,
         createQuestion,
         updateQuestion,
+=======
+Question, 
+createQuestion, 
+updateQuestion,
+>>>>>>> 70b13b397ab76889ad3b7bfb30e2ae2f9028f268
         signUp,
         createUser,
         updateMe,

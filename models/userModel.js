@@ -1,3 +1,4 @@
+
 const crypto = require('crypto');
 const mongoose = require('mongoose');
 const validator = require('validator');
@@ -6,10 +7,17 @@ const { RoleCode, levelEnum } = require('../utils/enum');
 const userSchema = new mongoose.Schema(
   {
     // <creating-property-schema />
+<<<<<<< HEAD
     level: {
       type: String,
       enum: Object.values(levelEnum),
     },
+=======
+      level: {
+          type: String,
+          enum: Object.values(levelEnum),
+     },
+>>>>>>> 70b13b397ab76889ad3b7bfb30e2ae2f9028f268
     name: {
       type: String,
       required: [true, 'Please tell us your name!'],

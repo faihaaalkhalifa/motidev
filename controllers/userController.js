@@ -29,6 +29,18 @@ exports.updateMe = catchAsync(async (req, res, next) => {
     req.body,
     //  property update
 
+<<<<<<< HEAD
+=======
+
+
+
+
+
+
+
+
+
+>>>>>>> 70b13b397ab76889ad3b7bfb30e2ae2f9028f268
     'name',
     'email',
     'photo',
