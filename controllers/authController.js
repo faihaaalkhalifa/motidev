@@ -31,20 +31,7 @@ exports.signup = catchAsync(async (req, res, next) => {
     name: req.body.name,
     email: req.body.email,
     password: req.body.password,
-<<<<<<< HEAD
     //  property signup
-=======
-  //  property signup
-
-
-
-
-
-
-
-
-
->>>>>>> 70b13b397ab76889ad3b7bfb30e2ae2f9028f268
   });
   const url = `${req.protocol}://${req.get('host')}/me`;
   // await new Email(newUser, url).welcomeMailerSend();

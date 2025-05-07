@@ -369,17 +369,6 @@ exports.User = {
     id: { type: 'string' },
     // property
 
-<<<<<<< HEAD
-=======
-
-
-
-
-
-
-
-
->>>>>>> 70b13b397ab76889ad3b7bfb30e2ae2f9028f268
     email: { type: 'string', format: 'email' },
     name: { type: 'string' },
     role: { type: 'string', enum: Object.values(RoleCode) },
@@ -390,17 +379,6 @@ exports.User = {
     id: '5ebac534954b54139806c112',
     // property example
 
-<<<<<<< HEAD
-=======
-
-
-
-
-
-
-
-
->>>>>>> 70b13b397ab76889ad3b7bfb30e2ae2f9028f268
     email: 'user@gmail.com',
     name: 'adel seirafi',
     role: 'USER',
@@ -413,17 +391,6 @@ exports.createUser = {
   properties: {
     // create property
 
-<<<<<<< HEAD
-=======
-
-
-
-
-
-
-
-
->>>>>>> 70b13b397ab76889ad3b7bfb30e2ae2f9028f268
     name: { type: 'string' },
     email: { type: 'string' },
     password: { type: 'string' },
@@ -433,17 +400,6 @@ exports.createUser = {
   example: {
     // create property example
 
-<<<<<<< HEAD
-=======
-
-
-
-
-
-
-
-
->>>>>>> 70b13b397ab76889ad3b7bfb30e2ae2f9028f268
     name: 'Mohammed Seirafi',
     email: 'adel@gmail.com',
     password: '123454321',
@@ -457,17 +413,6 @@ exports.updateMe = {
   properties: {
     // update property
 
-<<<<<<< HEAD
-=======
-
-
-
-
-
-
-
-
->>>>>>> 70b13b397ab76889ad3b7bfb30e2ae2f9028f268
     name: { type: 'string' },
     email: { type: 'string' },
     photo: { type: 'string' },
@@ -475,17 +420,6 @@ exports.updateMe = {
   example: {
     // update property example
 
-<<<<<<< HEAD
-=======
-
-
-
-
-
-
-
-
->>>>>>> 70b13b397ab76889ad3b7bfb30e2ae2f9028f268
     name: 'Mohammed Seirafi',
     email: 'adel@gmail.com',
     photo: './public/img/users/dafult.jpg',

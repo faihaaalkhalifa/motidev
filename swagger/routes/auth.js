@@ -236,63 +236,18 @@ exports.signUp = {
   type: 'object',
   required: [
     // required property
-
-<<<<<<< HEAD
-=======
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
->>>>>>> 70b13b397ab76889ad3b7bfb30e2ae2f9028f268
     'name',
     'email',
     'password',
   ],
   properties: {
     //  property signup
-
-<<<<<<< HEAD
-=======
-
-
-
-
-
-
-
-
->>>>>>> 70b13b397ab76889ad3b7bfb30e2ae2f9028f268
     name: { type: 'string' },
     email: { type: 'string' },
     password: { type: 'string' },
   },
   example: {
     // create property example
-
-<<<<<<< HEAD
-=======
-
-
-
-
-
-
-
-
->>>>>>> 70b13b397ab76889ad3b7bfb30e2ae2f9028f268
     name: 'Adel Seirafi',
     email: 'user@gmail.com',
     password: '123454321',

@@ -217,15 +217,10 @@
  *         $ref: '#/components/responses/NotFound'
  */
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 70b13b397ab76889ad3b7bfb30e2ae2f9028f268
 exports.Question = {
   type: 'object',
   properties: {
     id: { type: 'string' },
-<<<<<<< HEAD
     // property
     level: { type: 'string', enum: ['Junior', 'Mid-Level', 'Senior'] },
     answer: { type: 'array', items: { type: 'string' } },
@@ -254,42 +249,11 @@ exports.Question = {
 
     createdAt: '2024-11-24T16:35:04.438Z',
     updatedAt: '2024-11-24T16:35:04.438Z',
-=======
-// property
-level: { type: 'string', enum: ['Junior','Mid-Level','Senior',]  },
-answer: { type: 'array',items: {type:'string',} },
-c: { type: 'string',},
-d: { type: 'string',},
-b: { type: 'string',},
-a: { type: 'string',},
-question: { type: 'string',},
-  },
-  example: {
-    _id: '5ebac534954b54139806c112',
-// property example
-level: 'Junior',
-
-answer: ['answer'],
-
-c: 'c',
-
-d: 'd',
-
-b: 'b',
-
-a: 'a',
-
-question: 'test',
-
-   createdAt: "2024-11-24T16:35:04.438Z",
-   updatedAt: "2024-11-24T16:35:04.438Z"
->>>>>>> 70b13b397ab76889ad3b7bfb30e2ae2f9028f268
   },
 };
 exports.createQuestion = {
   type: 'object',
   properties: {
-<<<<<<< HEAD
     // create property
     level: { type: 'string', enum: ['Junior', 'Mid-Level', 'Senior'] },
     answer: { type: 'array', items: { type: 'string' } },
@@ -330,55 +294,10 @@ exports.createQuestion = {
 
     'question',
   ],
-=======
-// create property
-level: { type: 'string', enum: ['Junior','Mid-Level','Senior',]  },
-answer: { type: 'array',items: {type:'string',} },
-c: { type: 'string',},
-d: { type: 'string',},
-b: { type: 'string',},
-a: { type: 'string',},
-question: { type: 'string',},
-  },
-  example: {
-// create property example
-level: 'Junior',
-
-answer: ['answer'],
-
-c: 'c',
-
-d: 'd',
-
-b: 'b',
-
-a: 'a',
-
-question: 'test',
-
-  },
-  required:[
-// required property
-
-'answer', 
-
-'c', 
-
-'d', 
-
-'b', 
-
-'a', 
-
-'question', 
-
-  ]
->>>>>>> 70b13b397ab76889ad3b7bfb30e2ae2f9028f268
 };
 exports.updateQuestion = {
   type: 'object',
   properties: {
-<<<<<<< HEAD
     // update property
     level: { type: 'string', enum: ['Junior', 'Mid-Level', 'Senior'] },
     answer: { type: 'array', items: { type: 'string' } },
@@ -405,33 +324,3 @@ exports.updateQuestion = {
     question: 'test',
   },
 };
-=======
-// update property
-level: { type: 'string', enum: ['Junior','Mid-Level','Senior',]  },
-answer: { type: 'array',items: {type:'string',} },
-c: { type: 'string',},
-d: { type: 'string',},
-b: { type: 'string',},
-a: { type: 'string',},
-question: { type: 'string',},
-  },
-  example: {
-// update property example
-level: 'Junior',
-
-answer: ['answer'],
-
-c: 'c',
-
-d: 'd',
-
-b: 'b',
-
-a: 'a',
-
-question: 'test',
-
-  },
-};
-
->>>>>>> 70b13b397ab76889ad3b7bfb30e2ae2f9028f268
