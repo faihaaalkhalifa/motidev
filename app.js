@@ -14,6 +14,7 @@ const swaggerUI = require('swagger-ui-express');
 const swaggerSpec = require('./swagger/swagger');
 const AppError = require('./utils/appError');
 const errorGlobal = require('./controllers/errorController');
+//add test
 // Start express app
 const app = express();
 // 1) GLOBAL MIDDLEWARES
