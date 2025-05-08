@@ -4,6 +4,9 @@ const {
   createQuestion,
   updateQuestion,
 } = require('./routes/questionSwagger');
+const {
+ Project,createProject,updateProject
+} = require('./routes/projectSwagger');
 const { signUp } = require('./routes/auth');
 const { User, updateMe, createUser } = require('./routes/users');
 const {
@@ -32,7 +35,7 @@ const options = {
     ],
     components: {
       schemas: {
-        Question,
+        Question,Project,createProject,updateProject,
         createQuestion,
         updateQuestion,
         signUp,

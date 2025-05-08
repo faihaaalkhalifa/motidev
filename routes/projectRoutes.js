@@ -6,6 +6,9 @@ const express = require('express');
 const router = express.Router();
 router.use(protect);
 router
+  .route('/:id/addMember')
+  .patch(restrictTo(USER), projectController.addMember)
+router
   .route('/')
   .get(restrictTo(USER, ADMIN), projectController.getAllProject)
   .post(restrictTo(USER), projectController.createProject);

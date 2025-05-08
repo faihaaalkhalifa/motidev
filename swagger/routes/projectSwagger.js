@@ -222,6 +222,8 @@ exports.Project = {
   properties: {
     id: { type: 'string' },
     // property
+    member: { type: 'string' },
+    owner: { type: 'string' },
     emails: { type: 'array', items: { type: 'string' } },
     link: { type: 'string' },
     photo: { type: 'string' },
@@ -231,6 +233,10 @@ exports.Project = {
   example: {
     _id: '5ebac534954b54139806c112',
     // property example
+    memberId: '673c40cd59e293827f79e398',
+
+    ownerId: '673c40cd59e293827f79e398',
+
     emails: ['emails'],
 
     link: 'link',
@@ -249,6 +255,8 @@ exports.createProject = {
   type: 'object',
   properties: {
     // create property
+    member: { type: 'string' },
+
     emails: { type: 'array', items: { type: 'string' } },
     link: { type: 'string' },
     photo: { type: 'string' },
@@ -257,6 +265,8 @@ exports.createProject = {
   },
   example: {
     // create property example
+    memberId: '673c40cd59e293827f79e398',
+
     emails: ['emails'],
 
     link: 'link',
@@ -269,6 +279,10 @@ exports.createProject = {
   },
   required: [
     // required property
+    'member',
+
+    'owner',
+
     'emails',
 
     'link',
@@ -284,6 +298,8 @@ exports.updateProject = {
   type: 'object',
   properties: {
     // update property
+    member: { type: 'string' },
+
     emails: { type: 'array', items: { type: 'string' } },
     link: { type: 'string' },
     photo: { type: 'string' },
@@ -292,6 +308,8 @@ exports.updateProject = {
   },
   example: {
     // update property example
+    memberId: '673c40cd59e293827f79e398',
+
     emails: ['emails'],
 
     link: 'link',
