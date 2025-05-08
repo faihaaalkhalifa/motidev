@@ -14,6 +14,7 @@ exports.Env = {
 // <creating-enum-type />
 
 exports.levelEnum = {
+  Fresher:'Fresher',
   Junior: 'Junior',
   MidLevel: 'Mid-Level',
   Senior: 'Senior',
