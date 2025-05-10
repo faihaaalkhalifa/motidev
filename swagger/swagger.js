@@ -1,11 +1,18 @@
 const swaggerJsDoc = require('swagger-jsdoc');
 const {
+  Educational,
+  createEducational,
+  updateEducational,
+} = require('./routes/educationalSwagger');
+const {
   Question,
   createQuestion,
   updateQuestion,
 } = require('./routes/questionSwagger');
 const {
- Project,createProject,updateProject
+  Project,
+  createProject,
+  updateProject,
 } = require('./routes/projectSwagger');
 const { signUp } = require('./routes/auth');
 const { User, updateMe, createUser } = require('./routes/users');
@@ -35,7 +42,13 @@ const options = {
     ],
     components: {
       schemas: {
-        Question,Project,createProject,updateProject,
+        Educational,
+        createEducational,
+        updateEducational,
+        Question,
+        Project,
+        createProject,
+        updateProject,
         createQuestion,
         updateQuestion,
         signUp,

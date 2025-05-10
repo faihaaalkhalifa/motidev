@@ -6,10 +6,14 @@ const reviewSchema = new mongoose.Schema(
       type: mongoose.Schema.ObjectId,
       ref: 'User',
     },
-    Project:{
-   type: mongoose.Schema.ObjectId,
-    ref: 'Project',
-  },
+    Project: {
+      type: mongoose.Schema.ObjectId,
+      ref: 'Project',
+    },
+    Educational: {
+      type: mongoose.Schema.ObjectId,
+      ref: 'Educational',
+    },
     rate: {
       type: Number,
       max: 5,

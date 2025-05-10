@@ -2,17 +2,19 @@ const mongoose = require('mongoose');
 const projectSchema = new mongoose.Schema(
   {
     // <creating-property-schema />
-    
-    memberIds:[ {
-      type: mongoose.Schema.ObjectId,
-      ref: 'User',
-    }],
+
+    memberIds: [
+      {
+        type: mongoose.Schema.ObjectId,
+        ref: 'User',
+      },
+    ],
     ownerId: {
       type: mongoose.Schema.ObjectId,
       ref: 'User',
       required: [true, 'Please enter name  owner'],
     },
-   
+
     link: {
       type: String,
       required: [true, 'Please enter name  link'],
