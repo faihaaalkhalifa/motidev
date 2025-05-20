@@ -3,12 +3,21 @@ const mongoose = require('mongoose');
 const validator = require('validator');
 const bcrypt = require('bcryptjs');
 const { RoleCode, levelEnum } = require('../utils/enum');
+const { type } = require('os');
 const userSchema = new mongoose.Schema(
   {
     // <creating-property-schema />
     level: {
       type: String,
       enum: Object.values(levelEnum),
+    },
+    // descriptuion:{
+
+    // },
+    // skiles:{
+    // },
+    point: {
+      type: Number,
     },
     name: {
       type: String,

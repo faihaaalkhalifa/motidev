@@ -75,6 +75,8 @@ app.use(
 //ضغط البيانات قبل ارسالها من اجل تسريع النقل
 app.use(compression());
 //R <dont remove this line>
+const participantRouter = require('./routes/participantRoutes');
+const challengesRouter = require('./routes/challengesRoutes');
 const educationalRouter = require('./routes/educationalRoutes');
 const questionRouter = require('./routes/questionRoutes');
 const projectRoutes = require('./routes/projectRoutes');
@@ -83,6 +85,8 @@ const userRouter = require('./routes/userRoutes');
 
 app.use('/docs', swaggerUI.serve, swaggerUI.setup(swaggerSpec));
 //ROUTES <dont remove this line>
+app.use('/api/v1.0.0/participants', participantRouter);
+app.use('/api/v1.0.0/challenges', challengesRouter);
 app.use('/api/v1.0.0/educationals', educationalRouter);
 app.use('/api/v1.0.0/projects', projectRoutes);
 app.use('/api/v1.0.0/reviews', reviewRoutes);

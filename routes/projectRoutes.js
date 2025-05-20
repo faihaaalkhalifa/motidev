@@ -11,12 +11,9 @@ router.use(protect);
 router
   .route('/:id/addMember')
   .patch(restrictTo(USER), projectController.addMember);
-  router
-    .route('/mine')
-    .get(
-      restrictTo(USER),
-    projectController.getAllMineProject,
-    );
+router
+  .route('/mine')
+  .get(restrictTo(USER), projectController.getAllMineProject);
 router
   .route('/')
   .get(restrictTo(USER, ADMIN), projectController.getAllProject)
@@ -24,6 +21,10 @@ router
 router
   .route('/:id')
   .get(restrictTo(USER, ADMIN), projectController.getProject)
-  .patch(restrictTo(USER),checkOwner(Project,"ownerId","id"), projectController.updateProject)
+  .patch(
+    restrictTo(USER),
+    checkOwner(Project, 'ownerId', 'id'),
+    projectController.updateProject,
+  )
   .delete(restrictTo(USER, ADMIN), projectController.deleteProject);
 module.exports = router;

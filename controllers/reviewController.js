@@ -6,4 +6,4 @@ exports.getReview = handlerFactory.getOne(Review);
 exports.createReview = handlerFactory.createOne(Review);
 exports.updateReview = handlerFactory.updateOne(Review);
 exports.deleteReview = handlerFactory.deleteOne(Review);
-exports.getAllReview = handlerFactory.getAll(Review);
+exports.getAllReview = handlerFactory.getAll(Review); //بدي الرفيو لشي مخصص

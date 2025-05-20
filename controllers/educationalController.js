@@ -4,7 +4,6 @@ const handlerFactory = require('../utils/handlerFactory');
 const catchAsync = require('../utils/catchAsync');
 exports.getNumOfWatching = catchAsync(async (req, res, next) => {
   const thisEducational = await Educational.findById(req.params.id);
-
   if (!thisEducational) {
     return next(new AppError('No educational record found with that ID', 404));
   }
@@ -21,7 +20,7 @@ exports.getNumOfWatching = catchAsync(async (req, res, next) => {
   });
 });
 exports.createEducational = catchAsync(async (req, res, next) => {
-  if ((req.user.level == 'Fresher')) {
+  if (req.user.level == 'Fresher') {
     return next(
       new AppError('Fresher level can not ctreate Educational content ', 403),
     );
@@ -45,10 +44,10 @@ exports.createEducational = catchAsync(async (req, res, next) => {
   });
 });
 exports.getEducational = handlerFactory.getOne(Educational, {
-  path: 'userId',
+  path: 'userId', // هل المتغير ده محجوز
   select: 'name photo -_id',
 });
-// exports.createEducational = handlerFactory.createOne(Educational);
+exports.createEducational = handlerFactory.createOne(Educational);
 exports.updateEducational = handlerFactory.updateOne(Educational);
 exports.deleteEducational = handlerFactory.deleteOne(Educational);
 exports.getAllEducational = handlerFactory.getAll(Educational);

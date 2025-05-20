@@ -1,17 +1,17 @@
 /**
  * @swagger
  * tags:
- *   name: Reviews
- *   description: Review management and retrieval
+ *   name: Participants
+ *   description: Participant management and retrieval
  */
 
 /**
  * @swagger
- * /reviews:
+ * /participants:
  *   post:
- *     summary: Create a review
- *     description: USER can create review.
- *     tags: [Reviews]
+ *     summary: Create a participant
+ *     description: USER,ADMIN can create participant.
+ *     tags: [Participants]
  *     security:
  *       - bearerAuth: []
  *     requestBody:
@@ -19,7 +19,7 @@
  *       content:
  *         application/json:
  *           schema:
- *             $ref: '#/components/schemas/createReview'
+ *             $ref: '#/components/schemas/createParticipant'
  *     responses:
  *       "201":
  *         description: Created
@@ -32,7 +32,7 @@
  *                   type: string
  *                   example: success
  *                 doc:
- *                     $ref: '#/components/schemas/Review'
+ *                     $ref: '#/components/schemas/Participant'
  *       "400":
  *         $ref: '#/components/responses/DuplicateEmail'
  *       "401":
@@ -41,9 +41,9 @@
  *         $ref: '#/components/responses/Forbidden'
  *
  *   get:
- *     summary: Get all reviews
- *     description: USER,ADMIN can retrieve all reviews.
- *     tags: [Reviews]
+ *     summary: Get all participants
+ *     description: ADMIN can retrieve all participants.
+ *     tags: [Participants]
  *     security:
  *       - Bearer: []
  *     parameters:
@@ -65,7 +65,7 @@
  *           type: integer
  *           minimum: 1
  *         default: 10
- *         description: Maximum number of reviews
+ *         description: Maximum number of participants
  *       - in: query
  *         name: search
  *         schema:
@@ -100,7 +100,7 @@
  *                 doc:
  *                   type: array
  *                   items:
- *                     $ref: '#/components/schemas/Review'
+ *                     $ref: '#/components/schemas/Participant'
  *       "401":
  *         $ref: '#/components/responses/Unauthorized'
  *       "403":
@@ -109,11 +109,11 @@
 
 /**
  * @swagger
- * /reviews/{id}:
+ * /participants/{id}:
  *   get:
- *     summary: Get a review
- *     description: USER,ADMIN can use this router.
- *     tags: [Reviews]
+ *     summary: Get a participant
+ *     description: ADMIN can use this router.
+ *     tags: [Participants]
  *     security:
  *       - bearerAuth: []
  *     parameters:
@@ -122,7 +122,7 @@
  *         required: true
  *         schema:
  *           type: string
- *         description: Review id
+ *         description: Participant id
  *     responses:
  *       "200":
  *         description: OK
@@ -135,7 +135,7 @@
  *                   type: string
  *                   example: success
  *                 doc:
- *                     $ref: '#/components/schemas/Review'
+ *                     $ref: '#/components/schemas/Participant'
  *       "401":
  *         $ref: '#/components/responses/Unauthorized'
  *       "403":
@@ -144,9 +144,9 @@
  *         $ref: '#/components/responses/NotFound'
  *
  *   patch:
- *     summary: Update a review
- *     description: USER can use this router.
- *     tags: [Reviews]
+ *     summary: Update a participant
+ *     description:  can use this router.
+ *     tags: [Participants]
  *     security:
  *       - bearerAuth: []
  *     parameters:
@@ -155,13 +155,13 @@
  *         required: true
  *         schema:
  *           type: string
- *         description: Review id
+ *         description: Participant id
  *     requestBody:
  *         required: true
  *         content:
  *           application/json:
  *             schema:
- *               $ref: '#/components/schemas/updateReview'
+ *               $ref: '#/components/schemas/updateParticipant'
  *     responses:
  *       "200":
  *         description: OK
@@ -174,7 +174,7 @@
  *                   type: string
  *                   example: success
  *                 doc:
- *                     $ref: '#/components/schemas/Review'
+ *                     $ref: '#/components/schemas/Participant'
  *       "401":
  *         $ref: '#/components/responses/Unauthorized'
  *       "403":
@@ -183,9 +183,9 @@
  *         $ref: '#/components/responses/NotFound'
  *
  *   delete:
- *     summary: Delete a  review.
- *     description: USER,ADMIN can use this router.
- *     tags: [Reviews]
+ *     summary: Delete a  participant.
+ *     description: ADMIN can use this router.
+ *     tags: [Participants]
  *     security:
  *       - bearerAuth: []
  *     parameters:
@@ -194,7 +194,7 @@
  *         required: true
  *         schema:
  *           type: string
- *         description: Review id
+ *         description: Participant id
  *     responses:
  *       "200":
  *         description: OK
@@ -217,64 +217,73 @@
  *         $ref: '#/components/responses/NotFound'
  */
 
-// exports.Review = {
-//   type: 'object',
-//   properties: {
-//     id: { type: 'string' },
-//     // property
-participant: { type: 'string',},
-//     rate: { type: 'number' },
-//     comment: { type: 'string' },
-//   },
-//   example: {
-//     _id: '5ebac534954b54139806c112',
-//     // property example
-participantId: '673c40cd59e293827f79e398',
+exports.Participant = {
+  type: 'object',
+  properties: {
+    id: { type: 'string' },
+    // property
+    comment: { type: 'string' },
+    photo: { type: 'string' },
+    challenges: { type: 'string' },
+    user: { type: 'string' },
+  },
+  example: {
+    _id: '5ebac534954b54139806c112',
+    // property example
+    comment: 'comment',
 
-//     rate: rate,
-//     comment: 'comment',
+    photo: 'photo',
 
-//     createdAt: '2024-11-24T16:35:04.438Z',
-//     updatedAt: '2024-11-24T16:35:04.438Z',
-//   },
-// };
-// exports.createReview = {
-//   type: 'object',
-//   properties: {
-//     // create property
-participant: { type: 'string',},
-//     rate: { type: 'number' },
-//     comment: { type: 'string' },
-//   },
-//   example: {
-//     // create property example
-participantId: '673c40cd59e293827f79e398',
+    challengesIds: ['673c40cd59e293827f79e398', '673c40cd59e293827f79e399'],
 
-//     rate: rate,
+    userId: '673c40cd59e293827f79e398',
 
-//     comment: 'comment',
-//   },
-//   required: [
-//     // required property
+    createdAt: '2024-11-24T16:35:04.438Z',
+    updatedAt: '2024-11-24T16:35:04.438Z',
+  },
+};
+exports.createParticipant = {
+  type: 'object',
+  properties: {
+    // create property
+    comment: { type: 'string' },
+    photo: { type: 'string' },
+    challenges: { type: 'string' },
+    user: { type: 'string' },
+  },
+  example: {
+    // create property example
+    comment: 'comment',
 
+    photo: 'photo',
 
-//     'comment',
-//   ],
-// };
-// exports.updateReview = {
-//   type: 'object',
-//   properties: {
-//     // update property
-participant: { type: 'string',},
-//     rate: { type: 'number' },
-//     comment: { type: 'string' },
-//   },
-//   example: {
-//     // update property example
-participantId: '673c40cd59e293827f79e398',
+    challengesIds: ['673c40cd59e293827f79e398', '673c40cd59e293827f79e399'],
 
-//     rate: rate,
+    userId: '673c40cd59e293827f79e398',
+  },
+  required: [
+    // required property
 
-//     comment: 'comment',
-//   },
-// };
+    'photo',
+  ],
+};
+exports.updateParticipant = {
+  type: 'object',
+  properties: {
+    // update property
+    comment: { type: 'string' },
+    photo: { type: 'string' },
+    challenges: { type: 'string' },
+    user: { type: 'string' },
+  },
+  example: {
+    // update property example
+    comment: 'comment',
+
+    photo: 'photo',
+
+    challengesIds: ['673c40cd59e293827f79e398', '673c40cd59e293827f79e399'],
+
+    userId: '673c40cd59e293827f79e398',
+  },
+};

@@ -1,5 +1,15 @@
 const swaggerJsDoc = require('swagger-jsdoc');
 const {
+  Participant,
+  createParticipant,
+  updateParticipant,
+} = require('./routes/participantSwagger');
+const {
+  Challenges,
+  createChallenges,
+  updateChallenges,
+} = require('./routes/challengesSwagger');
+const {
   Educational,
   createEducational,
   updateEducational,
@@ -42,6 +52,12 @@ const options = {
     ],
     components: {
       schemas: {
+        Participant,
+        createParticipant,
+        updateParticipant,
+        Challenges,
+        createChallenges,
+        updateChallenges,
         Educational,
         createEducational,
         updateEducational,
