@@ -1,5 +1,4 @@
 const Participant = require('../models/participantModel');
-
 const User=require('../models/userModel');
 const Challenges=require('../models/challengesModel');
 const AppError = require('../utils/appError');
