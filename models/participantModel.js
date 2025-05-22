@@ -5,7 +5,8 @@ const participantSchema = new mongoose.Schema(
   {
     // <creating-property-schema />
     accepted:{
-    type:Number
+    type:Number,
+    default:0
     },
     comment: {
       type: String,
@@ -33,21 +34,6 @@ participantSchema.post('findOneAndDelete', async function (doc) {
       return next(new AppError('error deleting reviewss', 500));
     }
   }
-});
-
-participantSchema.pre(/^find/, function (next) {
-  this.populate({
-    path: 'challengesIds',
-    select: '-_id',
-  });
-  next();
-});
-participantSchema.pre(/^find/, function (next) {
-  this.populate({
-    path: 'userId',
-    select: '-_id',
-  });
-  next();
 });
 const Participant = mongoose.model('Participant', participantSchema);
 module.exports = Participant;

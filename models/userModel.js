@@ -10,6 +10,7 @@ const userSchema = new mongoose.Schema(
     level: {
       type: String,
       enum: Object.values(levelEnum),
+      default:"Fresher"
     },
     // descriptuion:{
 
