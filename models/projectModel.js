@@ -35,20 +35,6 @@ const projectSchema = new mongoose.Schema(
   { timestamps: true, versionKey: false },
 );
 // <creating-function-schema />
-projectSchema.pre(/^find/, function (next) {
-  this.populate({
-    path: 'memberIds',
-    select: 'name level -_id',
-  });
-  next();
-});
-projectSchema.pre(/^find/, function (next) {
-  this.populate({
-    path: 'ownerId',
-    select: 'name level ',
-  });
-  next();
-});
 
 const Project = mongoose.model('Project', projectSchema);
 module.exports = Project;

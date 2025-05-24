@@ -2,7 +2,13 @@ const Project = require('../models/projectModel');
 const AppError = require('../utils/appError');
 const handlerFactory = require('../utils/handlerFactory');
 const catchAsync = require('../utils/catchAsync');
-exports.getProject = handlerFactory.getOne(Project);
+exports.getProject = handlerFactory.getOne(Project,{
+  path: 'memberIds',
+  select: 'name level -_id',
+},{
+  path: 'ownerId',
+  select: 'name level ',
+});
 exports.createProject = catchAsync(async (req, res, next) => {
   req.body.ownerId = req.user._id; //
   req.body.memberIds = [req.user._id]; //
@@ -14,7 +20,13 @@ exports.createProject = catchAsync(async (req, res, next) => {
 });
 exports.updateProject = handlerFactory.updateOne(Project);
 exports.deleteProject = handlerFactory.deleteOne(Project);
-exports.getAllProject = handlerFactory.getAll(Project);
+exports.getAllProject = handlerFactory.getAllpop1(Project,{
+  path: 'memberIds',
+  select: 'name level -_id',
+},{
+  path: 'ownerId',
+  select: 'name level ',
+});
 exports.getAllMineProject = catchAsync(async (req, res, next) => {
   const doc = await Project.find({ memberIds: { $in: req.user._id } }); //
   res.status(200).json({
