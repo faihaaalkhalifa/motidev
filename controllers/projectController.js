@@ -38,7 +38,7 @@ exports.addMember = catchAsync(async (req, res, next) => {
   const project = await Project.findById(req.params.id);
   // console.log(project.ownerId._id.toString(), req.user._id.toString());
   if (project.ownerId._id.toString() != req.user._id.toString())
-    return next(new AppError('you are not owner', 403));
+    return next(new AppError('you are not ownerfgh', 403));
   project.memberIds.push(req.body.member);
   await project.save();
   res.status(201).json({
