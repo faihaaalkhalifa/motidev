@@ -1,6 +1,6 @@
 const participantController = require('../controllers/participantController');
 const { protect, restrictTo } = require('./../middlewares/authMiddlewers');
-const { addVarBody,addQuery } = require('./../middlewares/dynamicMiddleware');
+const { addVarBody, addQuery } = require('./../middlewares/dynamicMiddleware');
 const { RoleCode } = require('./../utils/enum');
 const { USER, ADMIN } = RoleCode;
 const express = require('express');
@@ -15,12 +15,20 @@ router
 
 router
   .route('/:challengesId/getAllParticipantByChallengeId')
-  .get(restrictTo(USER),addQuery("challengesId","challengesId"), participantController.getAllParticipant)
+  .get(
+    restrictTo(USER),
+    addQuery('challengesId', 'challengesId'),
+    participantController.getAllParticipant,
+  );
+router;
 router
-  router
   .route('/')
   .get(restrictTo(ADMIN), participantController.getAllParticipant)
-  .post(restrictTo(USER),addVarBody("userId","userId"), participantController.createParticipant);
+  .post(
+    restrictTo(USER),
+    addVarBody('userId', 'userId'),
+    participantController.createParticipant,
+  );
 router
   .route('/:id')
   .get(restrictTo(USER, ADMIN), participantController.getParticipant)

@@ -32,6 +32,7 @@ exports.updateMe = catchAsync(async (req, res, next) => {
     'name',
     'email',
     'photo',
+    'skiles'
   );
   if (req.file)
     filteredBody.photo = `${req.protocol}://${req.get('host')}/img/users/${

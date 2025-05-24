@@ -217,73 +217,82 @@
  *         $ref: '#/components/responses/NotFound'
  */
 
-exports.Participant = {
-  type: 'object',
-  properties: {
-    id: { type: 'string' },
-    // property
-    comment: { type: 'string' },
-    photo: { type: 'string' },
-    challenges: { type: 'string' },
-    user: { type: 'string' },
-  },
-  example: {
-    _id: '5ebac534954b54139806c112',
-    // property example
-    comment: 'comment',
+// exports.Participant = {
+//   type: 'object',
+//   properties: {
+//     id: { type: 'string' },
+//     // property
+//     accepter: { type: 'array', items: { type: 'number' } },
+//     comment: { type: 'string' },
+//     photo: { type: 'string' },
+//     challenges: { type: 'string' },
+//     user: { type: 'string' },
+//   },
+//   example: {
+//     _id: '5ebac534954b54139806c112',
+//     // property example
+//     accepter: [accepter],
 
-    photo: 'photo',
+//     comment: 'comment',
 
-    challengesIds: ['673c40cd59e293827f79e398', '673c40cd59e293827f79e399'],
+//     photo: 'photo',
 
-    userId: '673c40cd59e293827f79e398',
+//     challengesIds: ['673c40cd59e293827f79e398', '673c40cd59e293827f79e399'],
 
-    createdAt: '2024-11-24T16:35:04.438Z',
-    updatedAt: '2024-11-24T16:35:04.438Z',
-  },
-};
-exports.createParticipant = {
-  type: 'object',
-  properties: {
-    // create property
-    comment: { type: 'string' },
-    photo: { type: 'string' },
-    challenges: { type: 'string' },
-    user: { type: 'string' },
-  },
-  example: {
-    // create property example
-    comment: 'comment',
+//     userId: '673c40cd59e293827f79e398',
 
-    photo: 'photo',
+//     createdAt: '2024-11-24T16:35:04.438Z',
+//     updatedAt: '2024-11-24T16:35:04.438Z',
+//   },
+// };
+// exports.createParticipant = {
+//   type: 'object',
+//   properties: {
+//     // create property
+//     accepter: { type: 'array', items: { type: 'number' } },
+//     comment: { type: 'string' },
+//     photo: { type: 'string' },
+//     challenges: { type: 'string' },
+//     user: { type: 'string' },
+//   },
+//   example: {
+//     // create property example
+//     accepter: [accepter],
 
-    challengesIds: ['673c40cd59e293827f79e398', '673c40cd59e293827f79e399'],
+//     comment: 'comment',
 
-    userId: '673c40cd59e293827f79e398',
-  },
-  required: [
-    // required property
+//     photo: 'photo',
 
-    'photo',
-  ],
-};
-exports.updateParticipant = {
-  type: 'object',
-  properties: {
-    // update property
-    comment: { type: 'string' },
-    photo: { type: 'string' },
-    challenges: { type: 'string' },
-    user: { type: 'string' },
-  },
-  example: {
-    // update property example
-    comment: 'comment',
+//     challengesIds: ['673c40cd59e293827f79e398', '673c40cd59e293827f79e399'],
 
-    photo: 'photo',
+//     userId: '673c40cd59e293827f79e398',
+//   },
+//   required: [
+//     // required property
 
-    challengesIds: ['673c40cd59e293827f79e398', '673c40cd59e293827f79e399'],
+//     'photo',
+//   ],
+// };
+// exports.updateParticipant = {
+//   type: 'object',
+//   properties: {
+//     // update property
+//     accepter: { type: 'array', items: { type: 'number' } },
+//     comment: { type: 'string' },
+//     photo: { type: 'string' },
+//     challenges: { type: 'string' },
+//     user: { type: 'string' },
+//   },
+//   example: {
+//     // update property example
+//     accepter: [accepter],
 
-    userId: '673c40cd59e293827f79e398',
-  },
-};
+//     comment: 'comment',
+
+//     photo: 'photo',
+
+//     challengesIds: ['673c40cd59e293827f79e398', '673c40cd59e293827f79e399'],
+
+//     userId: '673c40cd59e293827f79e398',
+//   },
+// };

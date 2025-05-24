@@ -4,18 +4,17 @@ const mongoose = require('mongoose');
 const challengesSchema = new mongoose.Schema(
   {
     // <creating-property-schema />
-    acceptedOfThisChallenge:{
-    type:Number
+    acceptedOfThisChallenge: {
+      type: Number,
     },
-      level: {
-          type: String,
-          enum: Object.values(levelEnum),
-      },
-    photo: 
-      {
-        type: String,
-        default:"link defualt photo"
-      },
+    level: {
+      type: String,
+      enum: Object.values(levelEnum),
+    },
+    photo: {
+      type: String,
+      default: 'link defualt photo',
+    },
     description: {
       type: String,
     },

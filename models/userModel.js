@@ -10,13 +10,14 @@ const userSchema = new mongoose.Schema(
     level: {
       type: String,
       enum: Object.values(levelEnum),
-      default:"Fresher"
+      default: 'Fresher',
     },
-    // descriptuion:{
-
-    // },
-    // skiles:{
-    // },
+    descriptuion:{
+      type:String
+    },
+    skiles:[{
+      type:String
+    }],
     point: {
       type: Number,
     },

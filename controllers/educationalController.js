@@ -51,5 +51,3 @@ exports.createEducational = handlerFactory.createOne(Educational);
 exports.updateEducational = handlerFactory.updateOne(Educational);
 exports.deleteEducational = handlerFactory.deleteOne(Educational);
 exports.getAllEducational = handlerFactory.getAll(Educational);
-
-

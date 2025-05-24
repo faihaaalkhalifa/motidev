@@ -12,7 +12,7 @@ const projectSchema = new mongoose.Schema(
     ownerId: {
       type: mongoose.Schema.ObjectId,
       ref: 'User',
-      required: [true, 'Please enter name  owner'],
+      required: [true, 'Please enter owner'],
     },
 
     link: {
@@ -29,7 +29,7 @@ const projectSchema = new mongoose.Schema(
     },
     name: {
       type: String,
-      required: [true, 'Please enter name  name'],
+      required: [true, 'Please enter name '],
     },
   },
   { timestamps: true, versionKey: false },

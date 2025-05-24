@@ -1,12 +1,16 @@
-
 const { RoleCode, levelEnum } = require('../utils/enum');
 const mongoose = require('mongoose');
 const participantSchema = new mongoose.Schema(
   {
     // <creating-property-schema />
-    accepted:{
-    type:Number,
-    default:0
+    accepter: [
+      {
+        type: Number,
+      },
+    ],
+    accepted: {
+      type: Number,
+      default: 0,
     },
     comment: {
       type: String,
@@ -15,8 +19,8 @@ const participantSchema = new mongoose.Schema(
       type: String,
     },
     challengesId: {
-          type: mongoose.Schema.ObjectId,
-          ref: 'Challenges',
+      type: mongoose.Schema.ObjectId,
+      ref: 'Challenges',
     },
     userId: {
       type: mongoose.Schema.ObjectId,
@@ -26,6 +30,7 @@ const participantSchema = new mongoose.Schema(
   { timestamps: true, versionKey: false },
 );
 // <creating-function-schema />
+
 participantSchema.post('findOneAndDelete', async function (doc) {
   if (doc) {
     try {
