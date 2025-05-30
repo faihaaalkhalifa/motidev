@@ -9,6 +9,12 @@ const Project = require('../models/projectModel');
 const router = express.Router();
 router.use(protect);
 router
+.route("/searchName")
+.get(restrictTo(USER, ADMIN) ,projectController.searchProjectByName);
+router
+.route("/searchStatus")
+.get(restrictTo(USER, ADMIN) ,projectController.searchProjectByStatus);
+router
   .route('/:id/addMember')
   .patch(restrictTo(USER), projectController.addMember);
 router

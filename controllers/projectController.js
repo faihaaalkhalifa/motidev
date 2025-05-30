@@ -28,7 +28,11 @@ exports.getAllProject = handlerFactory.getAllpop1(Project,{
   select: 'name level ',
 });
 exports.getAllMineProject = catchAsync(async (req, res, next) => {
-  const doc = await Project.find({ memberIds: { $in: req.user._id } }); //
+  const doc = await Project.find({ memberIds: { $in: req.user._id } })
+  .populate({
+    path:'memberIds',
+    select:'level name email'
+  });
   res.status(200).json({
     status: 'success',
     doc,
@@ -46,3 +50,33 @@ exports.addMember = catchAsync(async (req, res, next) => {
     doc: project,
   });
 });
+
+  exports.searchProjectByName = catchAsync(async (req, res) => {
+        const {name} = req.query;
+        if(!name){
+            res.status(400).json({
+          status: "fail",
+          message:"please provide project name to search"
+          });
+        }
+        const doc =await Project.find({name:{$eq:name}});
+        res.status(200).json({
+          status: "success",
+          doc,
+          });
+        });
+
+        exports.searchProjectByStatus = catchAsync(async (req, res) => {
+        const {status} = req.query;
+        if(!status){
+            res.status(400).json({
+          status: "fail",
+          message:"please provide project status to search"
+          });
+        }
+        const doc =await Project.find({status:{$eq:status}});
+        res.status(200).json({
+          status: "success",
+          doc,
+          });
+        });
