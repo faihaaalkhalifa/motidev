@@ -3,7 +3,7 @@ const AppError = require('./../utils/appError');
 exports.checkOwner = (Model, fieldOwner, params) =>
   catchAsync(async (req, res, next) => {
     const thisDoc = await Model.findById(req.params[params]);
-    console.log(req.user._id.toString() , thisDoc[fieldOwner].toString())
+    console.log(req.user._id.toString(), thisDoc[fieldOwner].toString());
     if (req.user._id.toString() !== thisDoc[fieldOwner].toString()) {
       return next(new AppError('You are not the owner. Access is denied', 403));
     }

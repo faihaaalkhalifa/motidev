@@ -6,8 +6,11 @@ const express = require('express');
 const router = express.Router();
 router.use(protect);
 router
+  .route('/:ByLevel')
+  .get(restrictTo(USER, ADMIN), challengesController.getChallengesByUserLevel);
+router
   .route('/')
-  .get(restrictTo(USER, ADMIN), challengesController.getAllChallenges)
+  .get(restrictTo(ADMIN), challengesController.getAllChallenges) //اليوزر والادمن؟؟؟؟
   .post(restrictTo(ADMIN), challengesController.createChallenges);
 router
   .route('/:id')

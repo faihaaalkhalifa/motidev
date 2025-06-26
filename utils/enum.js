@@ -11,8 +11,13 @@ exports.Env = {
   development: 'development',
   test: 'test',
 };
+exports.settingPoint = {
+  Fresher: 0,
+  Junior: 5000,
+  MidLevel: 10000,
+  Senior: 20000,
+};
 // <creating-enum-type />
-
 exports.levelEnum = {
   Fresher: 'Fresher',
   Junior: 'Junior',

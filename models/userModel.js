@@ -12,12 +12,14 @@ const userSchema = new mongoose.Schema(
       enum: Object.values(levelEnum),
       default: 'Fresher',
     },
-    descriptuion:{
-      type:String
+    descriptuion: {
+      type: String,
     },
-    skiles:[{
-      type:String
-    }],
+    skiles: [
+      {
+        type: String,
+      },
+    ],
     point: {
       type: Number,
     },

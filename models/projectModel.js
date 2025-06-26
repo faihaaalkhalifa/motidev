@@ -31,11 +31,11 @@ const projectSchema = new mongoose.Schema(
       type: String,
       required: [true, 'Please enter name '],
     },
-    status:{
-      type:String,
-      enum:["Completed", "In Progress"],
-      default:"In Progress"
-    }
+    status: {
+      type: String,
+      enum: ['Completed', 'In Progress'],
+      default: 'In Progress',
+    },
   },
   { timestamps: true, versionKey: false },
 );
