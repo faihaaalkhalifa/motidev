@@ -27,40 +27,49 @@ exports.getAllParticipantByChallengeId = catchAsync(async (req, res) => {
     doc,
   });
 });
-
-exports.incPointAndChekUserLevel = catchAsync(async (req, res) => {
-  //cheack user level
+exports.incPointAndChekUserLevel = catchAsync(async (req, res, next) => {
   const doc = await Participant.findById(req.params.id);
-  if (req.user._id == doc.userId) {
-    return next(new AppError('this is your participation', 403));
+  if (!doc) {
+    return next(new AppError('Participant Not Found', 404));
   }
-  if (doc.accepter.include(req.user._id)) {
-    doc.accepter = doc.accepter.filter((e) => e !== req.user._id);
+
+  if (req.user._id.equals(doc.userId)) {
+    return next(new AppError('this is your Participantion ', 403));
+  }
+
+  // تحقق من وجود التحدي
+  const thisChallenge = await Challenges.findById(doc.challengesId);
+  if (!thisChallenge) {
+    return next(new AppError('This challenge not found', 404));
+  }
+
+  // تحديث القائمة accepter
+  const userIndex = doc.accepter.findIndex(id => id.equals(req.user._id));
+  if (userIndex !== -1) {
+    doc.accepter.splice(userIndex, 1);
     doc.accepted--;
   } else {
-    if (doc) {
-      doc.accepter.push(req.user._id);
-      doc.accepted++;
-    }
+    doc.accepter.push(req.user._id);
+    doc.accepted++;
   }
+
   await doc.save();
+
+  // تحديث نقاط المستخدم إذا تم تحقيق الشرط
   const thisUser = await User.findById(doc.userId);
-  const thisChallenge = await Challenges.findOne(doc.challengesId);
-  if (doc.accepted == thisChallenge.acceptedOfThisChallenge) {
+  if (doc.accepted === thisChallenge.acceptedOfThisChallenge) {
     thisUser.point += thisChallenge.pointOfthisChallenge;
   }
-  if (thisUser.point >= settingPoint.Junior) {
-    if (thisUser.point >= settingPoint.MidLevel) {
-      if (thisUser.point >= settingPoint.Senior) {
-        thisUser.level="Senior";
-      } else {
-          thisUser.level="Mid-Level";
-      }
-    } else {
-      thisUser.level="Junior";
-    }
-  }
-  await thisUser.save();
 
-  res.status(200).json({ status: 'success', message: 'vvv' });
+  // تحديث مستوى المستخدم
+  if (thisUser.point >= settingPoint.Junior) {
+    thisUser.level = thisUser.point >= settingPoint.Senior 
+      ? "Senior" 
+      : thisUser.point >= settingPoint.MidLevel 
+        ? "Mid-Level" 
+        : "Junior";
+  }
+
+  await thisUser.save();
+  res.status(200).json({ status: 'success', message: 'success' });
 });

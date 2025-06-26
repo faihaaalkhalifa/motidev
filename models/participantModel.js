@@ -5,7 +5,8 @@ const participantSchema = new mongoose.Schema(
     // <creating-property-schema />
     accepter: [
       {
-        type: Number,
+        type: mongoose.Schema.ObjectId,
+      ref: 'User',
       },
     ],
     accepted: {

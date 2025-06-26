@@ -8,7 +8,7 @@ const router = express.Router();
 router.use(protect);
 router
   .route('/:id/incPointAndChekUserLevel')
-  .patch(restrictTo(USER), participantController.incPointAndChekUserLevel);
+  .patch(restrictTo(ADMIN,USER), participantController.incPointAndChekUserLevel);
 router
   .route('/:id/getAllParticipantByChallengeId')
   .get(restrictTo(USER, ADMIN), participantController.getAllParticipantByChallengeId)
