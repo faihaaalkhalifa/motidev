@@ -14,22 +14,16 @@ const swaggerUI = require('swagger-ui-express');
 const swaggerSpec = require('./swagger/swagger');
 const AppError = require('./utils/appError');
 const errorGlobal = require('./controllers/errorController');
-//add test
+
 // Start express app
 const app = express();
 // 1) GLOBAL MIDDLEWARES
 // Implement CORS
-//سماح للمواقع من الاتصال بالخدمة
 app.use(cors());
-//تحديد المواقع المسموح لها بالاتصال
-// في حال وجود اكثر من موقع يتم تمرير مصفوفة بعناوين المواقع
-// app.use(cors({
-//   origin: 'https://www.website.com'
-// }))
+
 //السماح بالاتصال على جميع الموارد
 app.options('*', cors());
-//تحديد المسار او المورد المسموح الاتصال به
-// app.options('/api/v1/resource', cors());
+
 
 // Set security HTTP headers
 //مكتبة لحماية الموقع في حال الرفع على استضافة
