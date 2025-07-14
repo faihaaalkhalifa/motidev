@@ -6,7 +6,7 @@ const participantSchema = new mongoose.Schema(
     accepter: [
       {
         type: mongoose.Schema.ObjectId,
-      ref: 'User',
+        ref: 'User',
       },
     ],
     accepted: {

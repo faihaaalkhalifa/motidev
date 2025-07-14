@@ -14,9 +14,9 @@ router
 router
   .route('/searchStatus')
   .get(restrictTo(USER, ADMIN), projectController.searchProjectByStatus);
-router
-  .route('/:id/addMember')
-  .patch(restrictTo(USER), projectController.addMember);
+// router
+//   .route('/:id/addMember')
+//   .patch(restrictTo(USER), projectController.addMember);
 router
   .route('/mine')
   .get(restrictTo(USER), projectController.getAllMineProject);
@@ -29,7 +29,6 @@ router
   .get(restrictTo(USER, ADMIN), projectController.getProject)
   .patch(
     restrictTo(USER),
-    checkOwner(Project, 'ownerId', 'id'),
     projectController.updateProject,
   )
   .delete(restrictTo(USER, ADMIN), projectController.deleteProject);

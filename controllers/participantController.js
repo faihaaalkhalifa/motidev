@@ -20,7 +20,7 @@ exports.getAllParticipant = handlerFactory.getAllpop1(Participant, {
 
 exports.getAllParticipantByChallengeId = catchAsync(async (req, res) => {
   const doc = await Participant.find({
-    challengesId:req.params.id,
+    challengesId: req.params.id,
   });
   res.status(200).json({
     status: 'success',
@@ -44,7 +44,7 @@ exports.incPointAndChekUserLevel = catchAsync(async (req, res, next) => {
   }
 
   // تحديث القائمة accepter
-  const userIndex = doc.accepter.findIndex(id => id.equals(req.user._id));
+  const userIndex = doc.accepter.findIndex((id) => id.equals(req.user._id));
   if (userIndex !== -1) {
     doc.accepter.splice(userIndex, 1);
     doc.accepted--;
@@ -63,11 +63,12 @@ exports.incPointAndChekUserLevel = catchAsync(async (req, res, next) => {
 
   // تحديث مستوى المستخدم
   if (thisUser.point >= settingPoint.Junior) {
-    thisUser.level = thisUser.point >= settingPoint.Senior 
-      ? "Senior" 
-      : thisUser.point >= settingPoint.MidLevel 
-        ? "Mid-Level" 
-        : "Junior";
+    thisUser.level =
+      thisUser.point >= settingPoint.Senior
+        ? 'Senior'
+        : thisUser.point >= settingPoint.MidLevel
+          ? 'Mid-Level'
+          : 'Junior';
   }
 
   await thisUser.save();

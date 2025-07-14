@@ -6,10 +6,12 @@ const express = require('express');
 const router = express.Router();
 router.use(protect);
 // الحصول على 20 سؤالًا عشوائيًا حسب المستوى
-router
-.get('/random/:level', questionController.random);
-router
-.post('/submit-test', restrictTo(USER, ADMIN), questionController.submitTest)
+router.get('/random/:level', questionController.random);
+router.post(
+  '/submit-test',
+  restrictTo(USER, ADMIN),
+  questionController.submitTest,
+);
 router
   .route('/')
   .get(restrictTo(USER, ADMIN), questionController.getAllQuestion)

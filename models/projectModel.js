@@ -3,12 +3,20 @@ const projectSchema = new mongoose.Schema(
   {
     // <creating-property-schema />
 
-    memberIds: [
-      {
-        type: mongoose.Schema.ObjectId,
-        ref: 'User',
-      },
-    ],
+    // memberIds: [
+    //   {
+    //     type: mongoose.Schema.ObjectId,
+    //     ref: 'User',
+    //   },
+    // ],
+
+team: {
+  type: mongoose.Schema.ObjectId,
+  ref: 'Team',
+  required: true
+}
+
+,
     ownerId: {
       type: mongoose.Schema.ObjectId,
       ref: 'User',

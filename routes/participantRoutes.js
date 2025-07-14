@@ -8,10 +8,16 @@ const router = express.Router();
 router.use(protect);
 router
   .route('/:id/incPointAndChekUserLevel')
-  .patch(restrictTo(ADMIN,USER), participantController.incPointAndChekUserLevel);
+  .patch(
+    restrictTo(ADMIN, USER),
+    participantController.incPointAndChekUserLevel,
+  );
 router
   .route('/:id/getAllParticipantByChallengeId')
-  .get(restrictTo(USER, ADMIN), participantController.getAllParticipantByChallengeId)
+  .get(
+    restrictTo(USER, ADMIN),
+    participantController.getAllParticipantByChallengeId,
+  );
 
 // router
 //   .route('/:challengesId/getAllParticipantByChallengeId')
@@ -33,5 +39,5 @@ router
   .route('/:id')
   .get(restrictTo(USER, ADMIN), participantController.getParticipant)
   .patch(restrictTo(USER, ADMIN), participantController.updateParticipant)
-  .delete(restrictTo(USER,ADMIN), participantController.deleteParticipant);
+  .delete(restrictTo(USER, ADMIN), participantController.deleteParticipant);
 module.exports = router;

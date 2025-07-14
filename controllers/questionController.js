@@ -57,7 +57,7 @@ exports.submitTest = catchAsync(async (req, res) => {
 
     answers.forEach((userAnswer) => {
       const matchedQuestion = questions.find(
-        (q) => q._id.toString() === userAnswer.id
+        (q) => q._id.toString() === userAnswer.id,
       );
 
       if (matchedQuestion && matchedQuestion.answer === userAnswer.answer) {
@@ -79,7 +79,7 @@ exports.submitTest = catchAsync(async (req, res) => {
       correctAnswers: correctCount,
       total,
       percentage: percentage.toFixed(2),
-      message: passed
+      message: passed,
     });
   } catch (error) {
     return res.status(500).json({ message: error.message });

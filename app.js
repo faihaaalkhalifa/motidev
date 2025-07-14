@@ -24,7 +24,6 @@ app.use(cors());
 //السماح بالاتصال على جميع الموارد
 app.options('*', cors());
 
-
 // Set security HTTP headers
 //مكتبة لحماية الموقع في حال الرفع على استضافة
 app.use(helmet());
@@ -76,6 +75,7 @@ const questionRouter = require('./routes/questionRoutes');
 const projectRoutes = require('./routes/projectRoutes');
 const reviewRoutes = require('./routes/reviewRoutes');
 const userRouter = require('./routes/userRoutes');
+const teamRouter = require('./routes/teamRoutes');
 
 app.use('/docs', swaggerUI.serve, swaggerUI.setup(swaggerSpec));
 //ROUTES <dont remove this line>
@@ -85,6 +85,7 @@ app.use('/api/v1.0.0/educationals', educationalRouter);
 app.use('/api/v1.0.0/projects', projectRoutes);
 app.use('/api/v1.0.0/reviews', reviewRoutes);
 app.use('/api/v1.0.0/questions', questionRouter);
+app.use('/api/v1.0.0/team', teamRouter);
 app.use('/api/v1.0.0/users', userRouter);
 //في حال طلب مورد غير موجود
 app.all('*', (req, res, next) => {
@@ -98,8 +99,8 @@ mongoose
   .then((result) => {
     app.listen(process.env.PORT, () => {
       console.log(
-        `Example app listening at http://localhost:${process.env.PORT}
-Example app listening at http://localhost:${process.env.PORT}/docs`,
+        ` app listening at http://localhost:${process.env.PORT}
+        app listening at http://localhost:${process.env.PORT}/docs`,
       );
     });
   })

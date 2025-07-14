@@ -1,7 +1,7 @@
 const Participant = require('./participantModel');
 const { RoleCode, levelEnum } = require('../utils/enum');
 const mongoose = require('mongoose');
-const AppError=require('../utils/appError')
+const AppError = require('../utils/appError');
 const challengesSchema = new mongoose.Schema(
   {
     // <creating-property-schema />
@@ -30,7 +30,6 @@ const challengesSchema = new mongoose.Schema(
   { timestamps: true, versionKey: false },
 );
 // <creating-function-schema />
-
 
 const Challenges = mongoose.model('Challenges', challengesSchema);
 module.exports = Challenges;
