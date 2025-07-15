@@ -222,14 +222,14 @@
 //   properties: {
 //     id: { type: 'string' },
 //     // property
-participant: { type: 'string',},
+// participant: { type: 'string',},
 //     rate: { type: 'number' },
 //     comment: { type: 'string' },
 //   },
 //   example: {
 //     _id: '5ebac534954b54139806c112',
 //     // property example
-participantId: '673c40cd59e293827f79e398',
+// participantId: '673c40cd59e293827f79e398',
 
 //     rate: rate,
 //     comment: 'comment',
@@ -242,13 +242,13 @@ participantId: '673c40cd59e293827f79e398',
 //   type: 'object',
 //   properties: {
 //     // create property
-participant: { type: 'string',},
+// participant: { type: 'string',},
 //     rate: { type: 'number' },
 //     comment: { type: 'string' },
 //   },
 //   example: {
 //     // create property example
-participantId: '673c40cd59e293827f79e398',
+// participantId: '673c40cd59e293827f79e398',
 
 //     rate: rate,
 
@@ -257,7 +257,6 @@ participantId: '673c40cd59e293827f79e398',
 //   required: [
 //     // required property
 
-
 //     'comment',
 //   ],
 // };
@@ -265,13 +264,13 @@ participantId: '673c40cd59e293827f79e398',
 //   type: 'object',
 //   properties: {
 //     // update property
-participant: { type: 'string',},
+// participant: { type: 'string',},
 //     rate: { type: 'number' },
 //     comment: { type: 'string' },
 //   },
 //   example: {
 //     // update property example
-participantId: '673c40cd59e293827f79e398',
+// participantId: '673c40cd59e293827f79e398',
 
 //     rate: rate,
 

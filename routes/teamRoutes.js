@@ -16,13 +16,11 @@ router
 router
   .route('/:teamId/reject/:userId')
   .patch(restrictTo(USER, ADMIN), teamController.rejectRequest);
-router
-  .route('/mine')
-  .get(restrictTo(USER,ADMIN), teamController.getAllMine);
+router.route('/mine').get(restrictTo(USER, ADMIN), teamController.getAllMine);
 router
   .route('/')
-  .get(restrictTo(ADMIN,USER), teamController.getAllTeam)
-  .post(restrictTo(ADMIN,USER), teamController.createTeam);
+  .get(restrictTo(ADMIN, USER), teamController.getAllTeam)
+  .post(restrictTo(ADMIN, USER), teamController.createTeam);
 router
   .route('/:id')
   .get(restrictTo(USER, ADMIN), teamController.getTeam)

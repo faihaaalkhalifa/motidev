@@ -11,6 +11,7 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv').config();
 const swaggerUI = require('swagger-ui-express');
+const notificationRoutes = require('./routes/notificationRoutes');
 const swaggerSpec = require('./swagger/swagger');
 const AppError = require('./utils/appError');
 const errorGlobal = require('./controllers/errorController');
@@ -86,6 +87,7 @@ app.use('/api/v1.0.0/projects', projectRoutes);
 app.use('/api/v1.0.0/reviews', reviewRoutes);
 app.use('/api/v1.0.0/questions', questionRouter);
 app.use('/api/v1.0.0/team', teamRouter);
+app.use('/api/v1.0.0/notifications', notificationRoutes);
 app.use('/api/v1.0.0/users', userRouter);
 //في حال طلب مورد غير موجود
 app.all('*', (req, res, next) => {

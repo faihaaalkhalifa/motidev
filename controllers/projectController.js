@@ -1,5 +1,5 @@
 const Project = require('../models/projectModel');
-const Team =require("../models/teamModel")
+const Team = require('../models/teamModel');
 const AppError = require('../utils/appError');
 const handlerFactory = require('../utils/handlerFactory');
 const catchAsync = require('../utils/catchAsync');
@@ -13,20 +13,19 @@ const catchAsync = require('../utils/catchAsync');
 //     path: 'ownerId',
 //     select: 'name level ',
 //   },
-  
+
 // );
 
 exports.getProject = handlerFactory.getOne(
   Project,
   {
-  path: 'ownerId', 
-  select: 'name email'
+    path: 'ownerId',
+    select: 'name email',
   },
   {
-  path: 'team', 
-  populate: { path: 'members.user', select: 'name email role' }
+    path: 'team',
+    populate: { path: 'members.user', select: 'name email role' },
   },
-  
 );
 exports.createProject = catchAsync(async (req, res, next) => {
   req.body.owner = req.user._id;
@@ -68,7 +67,7 @@ exports.updateProject = catchAsync(async (req, res, next) => {
     {
       new: true,
       runValidators: true,
-    }
+    },
   );
 
   res.status(200).json({
@@ -90,12 +89,10 @@ exports.getAllProject = handlerFactory.getAllpop1(
   },
 );
 exports.getAllMineProject = catchAsync(async (req, res, next) => {
-  const doc = await Project.find({ ownerId: { $eq: req.user._id } }).populate(
-    {
-      path: 'ownerId',
-      select: 'level name email',
-    },
-  );
+  const doc = await Project.find({ ownerId: { $eq: req.user._id } }).populate({
+    path: 'ownerId',
+    select: 'level name email',
+  });
   res.status(200).json({
     status: 'success',
     doc,

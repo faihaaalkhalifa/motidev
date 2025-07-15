@@ -27,9 +27,6 @@ router
 router
   .route('/:id')
   .get(restrictTo(USER, ADMIN), projectController.getProject)
-  .patch(
-    restrictTo(USER),
-    projectController.updateProject,
-  )
+  .patch(restrictTo(USER), projectController.updateProject)
   .delete(restrictTo(USER, ADMIN), projectController.deleteProject);
 module.exports = router;

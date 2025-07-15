@@ -10,13 +10,12 @@ const projectSchema = new mongoose.Schema(
     //   },
     // ],
 
-team: {
-  type: mongoose.Schema.ObjectId,
-  ref: 'Team',
-  required: true
-}
+    team: {
+      type: mongoose.Schema.ObjectId,
+      ref: 'Team',
+      required: true,
+    },
 
-,
     ownerId: {
       type: mongoose.Schema.ObjectId,
       ref: 'User',

@@ -25,6 +25,7 @@
     "nodemon": "^3.0.1",
     "prettier": "^3.5.3",
     "pug": "^3.0.2",
+    "socket.io": "^4.8.1",
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^5.0.0",
     "validator": "^13.11.0",
@@ -35,6 +36,7 @@
     "morgan": "^1.10.0"
   },
   "scripts": {
+    "1": "hygen property add-to-document",
     "start": "nodemon app.js",
     " ": "node seeds.js",
     "format": "prettier --write \"**/*.js\" ",
@@ -42,7 +44,6 @@
     "postgenerate:resource:document": "npm run format",
     "add:property:object": "hygen property add-to-object",
     "postadd:property:object": "npm run format",
-    "1": "hygen property add-to-document",
     "postadd:property:document": "npm run format"
   }
 }
