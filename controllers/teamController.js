@@ -47,7 +47,7 @@ exports.acceptRequest = catchAsync(async (req, res, next) => {
     return next(new AppError('this member already exists', 400));
   }
 
-  // ✅ إزالة الطلب
+
   team.joinRequests = team.joinRequests.filter(
     (id) => id.toString() !== userId,
   );

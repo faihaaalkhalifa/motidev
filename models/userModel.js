@@ -60,7 +60,20 @@ const userSchema = new mongoose.Schema(
     createdAt: {
       type: Date,
       default: Date.now(),
-    },
+    },followings:[
+          {
+            type: mongoose.Schema.ObjectId,
+            ref: 'User',
+            default:[]
+          },
+        ],
+    followers: [
+          {
+            type: mongoose.Schema.ObjectId,
+            ref: 'User',
+            default:[]
+          },
+        ],
   },
   { versionKey: false },
 );

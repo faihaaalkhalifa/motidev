@@ -46,8 +46,9 @@ exports.markAsRead = catchAsync(async (req, res, next) => {
 
 exports.deleteNotification = catchAsync(async (req, res, next) => {
   const notification = await Notification.findOneAndDelete({
-      _id: req.params.id,
-      user: req.user._id,});
+    _id: req.params.id,
+    user: req.user._id,
+  });
 
   if (!notification) return next(new AppError('Notification not found', 404));
 
