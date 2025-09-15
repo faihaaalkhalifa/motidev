@@ -69,27 +69,30 @@ exports.forgotPassword = catchAsync(async (req, res, next) => {
   if (!user) {
     return next(new AppError('There is no user with email address.', 404));
   }
+  
   // 2) Generate the random reset token
   const resetToken = user.createPasswordResetToken();
   await user.save({ validateBeforeSave: false });
+  
   // 3) Send it to user's email
   try {
-    const resetURL = `${req.protocol}://${req.get('host')}${req.originalUrl
-      .split('/', 4)
-      .join('/')}/resetPassword/${resetToken}`;
-    // await new Email(user, resetURL).sendPasswordResetMailerSend();
+    const resetURL = `${req.protocol}://${req.get('host')}/api/v1.0.0/users/resetPassword/${resetToken}`;
+    
+    // إرسال البريد الإلكتروني الفعلي
+    await new Email(user, resetURL).sendPasswordReset();
+    
     res.status(200).json({
       status: 'success',
-      message: 'Token sent to email!',
-      url: resetURL,
+      message: 'Token sent to email!'
     });
+    
   } catch (err) {
     user.passwordResetToken = undefined;
     user.passwordResetExpires = undefined;
     await user.save({ validateBeforeSave: false });
+    
     return next(
-      new AppError('There was an error sending the email. Try again later!'),
-      500,
+      new AppError('There was an error sending the email. Try again later!', 500)
     );
   }
 });
