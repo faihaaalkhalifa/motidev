@@ -20,6 +20,9 @@ router
 router
   .route('/mine')
   .get(restrictTo(USER), projectController.getAllMineProject);
+  router
+  .route('/CountMine')
+  .get(restrictTo(USER), projectController.getCountMineProject);
 router
   .route('/')
   .get(restrictTo(USER, ADMIN), projectController.getAllProject)

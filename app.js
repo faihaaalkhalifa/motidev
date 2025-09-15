@@ -8,6 +8,7 @@ const hpp = require('hpp');
 const cookieParser = require('cookie-parser');
 const compression = require('compression');
 const cors = require('cors');
+const path = require('path'); 
 const mongoose = require('mongoose');
 const dotenv = require('dotenv').config();
 const swaggerUI = require('swagger-ui-express');
@@ -19,6 +20,8 @@ const errorGlobal = require('./controllers/errorController');
 // Start express app
 const app = express();
 // 1) GLOBAL MIDDLEWARES
+
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 // Implement CORS
 app.use(cors());
 
