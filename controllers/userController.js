@@ -14,6 +14,18 @@ exports.getMe = (req, res, next) => {
   req.params.id = req.user.id;
   next();
 };
+
+exports.getMyPoint = catchAsync(async (req, res, next) => {
+  const user = await User.findById(req.user._id).select('point');
+  if(!user) { 
+    return res.status(404).json({ message: "User not found" }); 
+  }
+  res.json({
+    success: true,
+    point: user.point
+  })
+});
+
 exports.updateMe = catchAsync(async (req, res, next) => {
   // 1) Create error if user POSTs password data
   if (req.body.password || req.body.point) {
@@ -70,9 +82,13 @@ exports.createUserNotuse = (req, res) => {
   });
 };
 
+
 exports.createUser = factory.createOne(User);
+
 exports.getUser = factory.getOne(User);
 exports.getAllUsers = factory.getAll(User);
+
+
 // Do NOT update passwords with this!
 exports.updateUser = factory.updateOne(User);
 exports.deleteUser = factory.deleteOne(User);

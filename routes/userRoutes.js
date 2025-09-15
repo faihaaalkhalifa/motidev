@@ -11,6 +11,7 @@ const router = express.Router();
 router.patch('/follow/:id',authMiddlewers.protect,restrictTo('USER'),userController.follow);
 router.get('/getfollowings/:id',authMiddlewers.protect,restrictTo('USER'),userController.getFollowings);
 router.get('/getfollowers/:id',authMiddlewers.protect,restrictTo('USER'),userController.getFollowers);
+router.get('/getMyPoint',authMiddlewers.protect,restrictTo('USER','ADMIN'),userController.getMyPoint);
 // طرق المصادقة
 router.post('/login', authController.login);
 router.get('/logout', authController.logout);

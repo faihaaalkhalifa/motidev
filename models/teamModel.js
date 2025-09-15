@@ -4,6 +4,11 @@ const teamSchema = new mongoose.Schema({
     type: String,
     required: [true, 'enter the name of team'],
   },
+  purpose: {
+    type: String,
+    required: [true, 'enter the purpose of team '],
+  },
+
   owner: {
     type: mongoose.Schema.ObjectId,
     ref: 'User',

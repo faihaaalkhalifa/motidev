@@ -22,6 +22,7 @@ const userSchema = new mongoose.Schema(
     ],
     point: {
       type: Number,
+      default: 0
     },
     name: {
       type: String,
@@ -35,6 +36,10 @@ const userSchema = new mongoose.Schema(
       lowercase: true,
       validate: [validator.isEmail, 'Please provide a valid email'],
     },
+    telegram_username:{
+      type: String,
+    },
+
     photo: {
       type: String,
       default: 'default.jpg',

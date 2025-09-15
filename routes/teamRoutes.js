@@ -5,7 +5,12 @@ const { USER, ADMIN } = RoleCode;
 const express = require('express');
 const router = express.Router();
 router.use(protect);
-
+// router
+// .route('/:id/members')
+// .get(restrictTo(USER, ADMIN), teamController.getTeamMembers);
+router
+.route('/:id/leader')
+.get(restrictTo(USER, ADMIN), teamController.getTeamLeader);
 router.route('/mine').get(restrictTo(USER, ADMIN), teamController.getAllMine);
 router
   .route('/:id/join')

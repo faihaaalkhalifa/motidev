@@ -15,18 +15,35 @@ exports.getAllMine = catchAsync(async (req, res) => {
 exports.joinTeam = catchAsync(async (req, res, next) => {
   const team = await Team.findById(req.params.id);
   if (!team) return next(new AppError('team not found', 404));
+  
+if (team.owner.toString() === req.user._id.toString()) {
+  return next(new AppError('Owner cannot join their own team', 400));
+}
 
-  if (team.joinRequests.includes(req.user._id))
-    return next(new AppError('you already req join', 400));
+  // التحقق إذا أرسل الرابط
+  const { portfolioLink } = req.body;
+  if (!portfolioLink) {
+    return next(new AppError('Portfolio link is required', 400));
+  }
 
-  team.joinRequests.push(req.user._id);
+  // التحقق إذا سبق أن أرسل طلب
+  if (team.joinRequests.some(reqItem => reqItem.user.toString() === req.user._id.toString())) {
+    return next(new AppError('you already requested to join', 400));
+  }
+
+  // إضافة الطلب مع رابط البورتفوليو
+  team.joinRequests.push({
+    user: req.user._id,
+    portfolioLink
+  });
+
   await team.save();
 
-  // ✅ إرسال إشعار لصاحب الفريق
+  // إرسال إشعار لصاحب الفريق
   await Notification.create({
-    user: team.owner, // صاحب الفريق
+    user: team.owner,
     title: 'طلب انضمام جديد',
-    message: `${req.user.name} طلب الانضمام إلى فريقك "${team.name}"`,
+    message: `${team.name}طلب الانضمام إلى فريقك "${req.user.name}`,
   });
 
   res.status(200).json({ message: 'send request success' });
@@ -74,6 +91,26 @@ exports.createTeam = catchAsync(async (req, res, next) => {
   res.status(201).json({
     status: 'success',
     data: team,
+  });
+});
+
+exports.getTeamLeader = catchAsync(async (req, res, next) => {
+  const team = await Team.findById(req.params.id).populate({
+    path: 'owner',
+    select: 'name photo telegram_username level'
+  });
+
+  if (!team) {
+    return next(new AppError('Team not found', 404));
+  }
+
+  if (!team.owner) {
+    return next(new AppError('This team has no leader assigned', 404));
+  }
+
+  res.status(200).json({
+    status: 'success',
+    leader: team.owner
   });
 });
 
