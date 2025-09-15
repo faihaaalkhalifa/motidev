@@ -27,6 +27,8 @@ exports.getProject = handlerFactory.getOne(
     populate: { path: 'members.user', select: 'name email role' },
   },
 );
+
+
 exports.createProject = catchAsync(async (req, res, next) => {
   req.body.owner = req.user._id;
   req.body.memberIds = [req.user._id];
@@ -93,6 +95,15 @@ exports.getAllMineProject = catchAsync(async (req, res, next) => {
     path: 'ownerId',
     select: 'level name email',
   });
+  res.status(200).json({
+    status: 'success',
+    doc,
+  });
+});
+
+
+exports.getCountMineProject = catchAsync(async (req, res, next) => {
+  const doc = await Project.countDocuments({ ownerId: { $eq: req.user._id } })
   res.status(200).json({
     status: 'success',
     doc,
